@@ -63,6 +63,7 @@ class LogInAPI(APIView):
         if password is None:
             return Response({"status": False, "code": 401, "message": "Password address is required to log in"})
         user = authenticate(username=email, password=password)
+        print(user)
         if user is None:
             return Response({"status": False, "code": 401, "message": "User with this Email and password was not found"})
         return Response({"status": True, "code": 200,
@@ -94,6 +95,9 @@ class RegisterAPI(APIView):
             return Response({"status": False, "code": 401, "message": "Password address is required for register"})
         user = User.objects.create_user(email=email, password=password, username=username, phone=phone, city=city, state=state,
                                 zipcode=zipcode, address=address)
+        print(password)
+        user.set_password(password)
+        user.save()
         return Response({"status": True, "code": 200,
                          "data": {'id': user.id, 'username': user.username, 'email': user.email,
                                   "profile_photo": user.get_profile_image, "city": user.city, "state": user.state,

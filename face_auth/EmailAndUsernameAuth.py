@@ -10,7 +10,7 @@ class CustomBackend(ModelBackend):  # requires to define two functions authentic
         UserModel = get_user_model()
         try:
             # below line gives query set,you can change the queryset as per your requirement
-            user = UserModel.objects.filter(Q(username__iexact=username) | Q(email__iexact=username), is_superuser=True).distinct()
+            user = UserModel.objects.filter(Q(username__iexact=username) | Q(email__iexact=username)).distinct()
 
         except UserModel.DoesNotExist:
             return None

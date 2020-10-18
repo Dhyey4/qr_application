@@ -23,9 +23,7 @@ SECRET_KEY = '*313-=2(phkr&%&^#(@(&(*@$^*&$@^$*&$^*&@$T@*&@$T@&*$*&$m3(jgyc)+jc#
 # SECURITY WARNING: don't run with debug turned on in production!
 
 AUTH_USER_MODEL = 'face_auth.User'
-AUTHENTICATION_BACKENDS = ('face_auth.EmailAndUsernameAuth.CustomBackend',
-                           'face_auth.EmailAndUsernameAuth.EmployAuthenctication'
-                           )
+AUTHENTICATION_BACKENDS = ('face_auth.EmailAndUsernameAuth.CustomBackend',)
 
 LOGIN_URL = 'face_auth:login'
 
