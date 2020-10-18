@@ -85,6 +85,9 @@ class RegisterAPI(APIView):
         city = request.POST.get('city')
         zipcode = request.POST.get('zipcode')
         address = request.POST.get('address')
+        check = User.objects.filter(email=email)
+        if len(check) > 0:
+            return Response({"status": False, "code": 401, "message": "Email is already registered"})
         if email is None:
             return Response({"status": False, "code": 401, "message": "Email is required for register"})
         if password is None:
