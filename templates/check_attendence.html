@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Attendance</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xl">
+            <select id="aworkLocation" name="" style="width: 300px !important;">
+            </select>&nbsp;
+            <input class="col-sm-2 form-control" type="text" name="from" id="from" placeholder="From Date">
+            &nbsp;
+            <input class="col-sm-2 form-control" type="text" name="to" id="to" placeholder="To Date">&nbsp;
+            <button class="btn btn-primary" id="datasubmit">Submit</button>&nbsp;
+            <!-- <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="exportLink">Download <span class="caret"></span></button> -->
+            <!-- <ul class="dropdown-menu"> -->
+            <select id="exportLink" class="btn btn-success">
+            <option>Select File Type</option>
+            <option id="pdf">PDF</option>
+            <option id="excel">XLSX</option>
+            </select>
+          <!-- </ul> -->
+            <div class="table-responsive">
+                <br>
+                <table class="table table-striped mg-b-0" id="attandance" width="100%">
+                </table>
+            </div>
+        </div><!-- row -->
+
+{#        <div class="row row-xs">#}
+{#            <div class="table-responsive">#}
+{#                <table class="table table-striped mg-b-0">#}
+{#                    <thead>#}
+{#                    <tr>#}
+{#                        <th scope="col">ID</th>#}
+{#                        <th scope="col">Name</th>#}
+{#                        <th scope="col">PF Number</th>#}
+{#                        <th scope="col">Shift</th>#}
+{#                        <th scope="col">Date</th>#}
+{#                        <th scope="col">Check-In</th>#}
+{#                        <th scope="col">Check-Out</th>#}
+{#                        <th scope="col">Early CheckIN</th>#}
+{#                        <th scope="col">Late CheckIN</th>#}
+{#                        <th scope="col">Time Spent</th>#}
+{#                    </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                    {% for data in row %}#}
+{#                    <tr>#}
+{#                        <th scope="row">{{ forloop.counter }}</th>#}
+{#                        <td>{{ data.name }}</td>#}
+{#                        <td>{{ data.pf }}</td>#}
+{#                        <td>{{ data.shift }}</td>#}
+{#                        <td>{{ data.date }}</td>#}
+{#                        <td>{{ data.checkin }}</td>#}
+{#                        <td>{{ data.checkout }}</td>#}
+{#                        <td>{{ data.early }}</td>#}
+{#                        <td>{{ data.late }}</td>#}
+{#                        <td>{{ data.spent }}</td>#}
+{#                    </tr>#}
+{#                    {% endfor %}#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </div>#}
+{#        </div><!-- row -->#}
+    </div>
+
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/select2/js/select2.min.js' %}"></script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queue</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <button class="btn btn-primary float-right"  onclick="show_addshift()">Add Shift</button>
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shifts</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xs">
+            <div class="table-responsive">
+                <table class="table table-striped mg-b-0 " id="shift_listing" width="100%" style="text-align: center;">
+                </table>
+            </div>
+        </div><!-- row -->
+    </div>
+    <div class="modal fade" id="addshift" role="dialog" aria-labelledby="addshift" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Add Shift</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="shift_name" class="form-control" placeholder="Name" autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" required="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Check-IN Time</label>
+                        <div class="col-sm-8">
+                            <input type="time" id="check_in" class="form-control" placeholder="Input box" required="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Check-Out Time</label>
+                        <div class="col-sm-8">
+                            <input type="time" id="check_out" class="form-control" placeholder="Input box" required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary tx-13" id="add_shift">Add Shift</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editshift" role="dialog" aria-labelledby="editshift" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Edit Shift</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="" id="shift_edit_id">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="ushift_name" class="form-control" placeholder="Name" autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Check-IN Time</label>
+                        <div class="col-sm-8">
+                            <input type="time" id="ucheck_in" class="form-control" placeholder="Input box">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Check-Out Time</label>
+                        <div class="col-sm-8">
+                            <input type="time" id="ucheck_out" class="form-control" placeholder="Input box">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary tx-13" id="update_shift">Update Shift</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

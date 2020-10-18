@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employ</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Employee</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xs">
+            <div class="col-md-8">
+                {% if msg %}
+                    <div class="alert alert-{{ type }}" id="ALERT" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endif %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">PF Number<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="pf_number" placeholder="PF Number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Video File</label>
+                        <div class="col-sm-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="video_file">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Work Location</label>
+                        <div class="col-sm-10">
+                            <select id="workLocation" name="workLocation[]" style="width: 300px !important;" multiple="multiple">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Shift Timing</label>
+                        <div class="col-sm-10">
+                            <select id="shifttiming" style="width: 300px !important;" name="shiftTimings[]" multiple="multiple">
+                                <option selected>Select Time Shift</option>
+                                <option >9:00 AM to 6:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mg-b-0">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- row -->
+    </div>
+{% endblock %}
+</body>
+</html>

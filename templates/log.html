@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Log</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Training Log</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xs">
+            <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in row %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.msg }}</td>
+                        <td>{{ data.date }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- row -->
+    </div>
+{% endblock %}
+</body>
+</html>

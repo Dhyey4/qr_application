@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addemp">Add Employee</button>
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" id="ALERT" role="alert">
+    
+                        <!-- <div {% if message.tags %} classs="{{ message.tags }}"{% endif %} id="ALERT" role="alert"> -->
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Employee Listing</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-lg">
+            <div class="table-responsive">
+                <table class="table table-striped mg-b-0" id="user_listing" width="100%">
+
+                </table>
+            </div>
+        </div><!-- row -->
+    </div>
+
+<!-- add employee modal -->
+<div id="addemp" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <form method="post" enctype="multipart/form-data" id="userform">
+            {% csrf_token %}
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            <h4 class="modal-title">Add Employee</h4>
+          </div>
+      <div class="modal-body">
+
+        <div class="row row-xs">
+            <div class="col-md-12">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name" required autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="name" required   onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" >
+                            <span id="error" style="display:none;color:red;">Enter Email Properly</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">PF Number<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="pf_number" name="pf_number" placeholder="PF Number"  required="" title="Alphabetics and Numbers only" autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                        </div>
+                    </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Designation</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation"  autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                    </div>
+                </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Video File</label>
+                        <div class="col-sm-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="video_file" autocomplete="off" >
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Work Location</label>
+                        <div class="col-sm-10">
+                            <select id="workLocation" name="workLocation[]" style="width: 300px !important;" multiple="multiple" autocomplete="off" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Shift Timing</label>
+                        <div class="col-sm-10">
+                            <select id="shifttiming" style="width: 300px !important;" multiple="multiple" name="shifttimings[]" autocomplete="off">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mg-b-0">
+                        <div class="col-sm-10">
+                            <!-- <button  class="btn btn-primary" id="create-emp">Submit</button> -->
+                        </div>
+                    </div>
+            </div>
+        </div><!-- row -->
+      </div>
+      <div class="modal-footer text-left">
+        <input  class="btn btn-primary" id="create-user" type="submit">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+      </form>
+
+  </div>
+</div>
+    <div class="modal fade" id="editUser" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Employee Details</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="useredit_form">
+                    <input type="hidden" value="" id="user_edit_pf">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="uname" id="uname" class="form-control" required="" autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">EMP ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="uid" id="uid" class="form-control" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" name="uemail" id="uemail" class="form-control" required="" autocomplete="off" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+                            <span id="error" style="display:none;color:red;">Enter Email Properly</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Work Location</label>
+                        <div class="col-sm-10">
+                            <select id="workLocation_drop_edit" name="workLocation_drop" style="width: 300px !important;" multiple="multiple" required="" autocomplete="off">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Shift Timing</label>
+                        <div class="col-sm-10">
+                            <select id="shift_drop_edit" name="shift_drop" style="width: 300px !important;" multiple="multiple" required="" autocomplete="off">
+                                <option>9:00 AM to 6:00 PM</option>
+                                <option>10:00 AM to 7:00 PM</option>
+                                <option>11:00 AM to 8:00 PM</option>
+                                <option>12:00 AM to 9:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary tx-13" id="edit_user">Save</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

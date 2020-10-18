@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queue</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Requests</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xs">
+            <div class="alert alert-info" id="ALERT" role="alert" style="display: none;">
+                <p id="alert-msg"> First Upload Video For selected PF Number!!!! </p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">PF Number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Shift</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in row %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ data.pf }}</td>
+                        <td>{{ data.name }}</td>
+                        <td><a href="{{ data.video }}"  class="btn btn-primary fancybox-media">Verify Video</a></td>
+                        <td>
+                            {% for shift in data.shifts %}
+                                {{ shift}}<br>
+                            {% endfor %}
+                        </td>
+                        <td>{{ data.status }}</td>
+                        {% if data.status == 'Pending' %}
+                            <td><button type="button" class="btn btn-primary" onclick="ACCEPT('{{ data.pf }}')">Accept</button>&nbsp;&nbsp;<button type="button" class="btn btn-danger" onclick="REJECT('{{ data.pf }}')">Reject</button></td>
+                        {% else %}
+                            <td>{{ data.status }}</td>
+                        {% endif %}
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- row -->
+    </div>
+    <div class="modal fade" id="modal2" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Assign WorkLocation and Time Shift</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="" id="hidden_pf_request">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Work Location</label>
+                        <div class="col-sm-10">
+                            <select id="workLocation_drop" name="workLocation_drop" style="width: 300px !important;" multiple="multiple">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Shift Timing</label>
+                        <div class="col-sm-10">
+                            <select id="shift_drop" name="shift_drop" style="width: 300px !important;" multiple="multiple">
+                                <option>9:00 AM to 6:00 PM</option>
+                                <option>10:00 AM to 7:00 PM</option>
+                                <option>11:00 AM to 8:00 PM</option>
+                                <option>12:00 AM to 9:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary tx-13" id="approve_request">Approve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="rejectModal" role="dialog" aria-labelledby="rejectModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-14">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel2">Reject Request With Proper Reason!</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" value="" id="reject_pf">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Work Location</label>
+                        <div class="col-sm-10">
+
+                            <textarea class="form-control" rows="4" id="reject_msg" placeholder="Textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary tx-13" id="reject_request">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block JS %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.fancybox-media').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        helpers : {
+            media : {}
+        }
+    });
+});
+</script>
+{% endblock %}
+</body>
+</html>

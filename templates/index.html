@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+{% block content %}
+<style type="text/css">
+    .mainhead{
+        text-align: center;
+    }
+</style>
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <h4 class="mg-b-0 tx-spacing--1">Welcome to Dashboard</h4>
+            </div>
+        </div>
+    </div>
+        
+      <div class="row row-xs">
+          <div class="col-sm-6 col-lg-3 mg-t-10 mg-sm-t-0">
+            <div class="card card-body">
+              <h6 class="tx-uppercase tx-20 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 mainhead ">{{counter}}</h6>
+              
+                <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 mainhead">Global Counter</h3>
+                
+            </div>
+          </div><!-- col -->
+{#          <div class="col-sm-6 col-lg-3 mg-t-10 mg-sm-t-0">#}
+{#            <div class="card card-body">#}
+{#              <h6 class="tx-uppercase tx-20 tx-spacing-1 tx-color-02 tx-semibold mg-b-8 mainhead">{{c_count}}</h6>#}
+{##}
+{#                <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 mainhead">Checked In</h3>#}
+{#                #}
+{#            </div>#}
+{#          </div><!-- col -->#}
+
+</div>
+
+
+{% endblock %}
+</body>
+</html>

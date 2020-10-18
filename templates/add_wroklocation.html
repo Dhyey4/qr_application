@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add WorkLocation</title>
+    <style>
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        .pac-container, .pac-item {
+            z-index: 2147483647 !important;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+            width: 290px;
+        }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+
+        #target {
+            width: 345px;
+        }
+
+        #map1 {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add WorkLocation</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-xs">
+            <div class="col-md-8">
+                {% if msg %}
+                    <div class="alert alert-{{ type }}" id="ALERT" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Location Code</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="location_code" name="location_code" placeholder="Default">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Radius<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" style="max-width: 250px;" id="geo_fence"
+                                   name="geo_fence" placeholder="meter">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2 pt-0">Location</label>
+                        <div class="col-sm-10">
+                            <div data-label="Select Location" class="df-example">
+                                <input type="text" class="form-control" id="pac-input" placeholder="Search Box"
+                                       style="width: 290px;">
+                                <div id="map1" class="ht-300"></div>
+                            </div><!-- df-example -->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Latitude<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="latitude" name="latitude" placeholder="meter">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Longitude<span class="tx-danger">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="longitude" name="longitude" placeholder="meter">
+                        </div>
+                    </div>
+                    <div class="form-group row mg-b-0">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- row -->
+    </div>
+{% endblock %}
+{% block JS %}
+    <script>
+        document.onfullscreenchange = function (event) {
+            let target = event.target;
+            let pacContainerElements = document.getElementsByClassName("pac-container");
+            if (pacContainerElements.length > 0) {
+                let pacContainer = document.getElementsByClassName("pac-container")[0];
+                if (pacContainer.parentElement === target) {
+                    console.log("Exiting FULL SCREEN - moving pacContainer to body");
+                    document.getElementsByTagName("body")[0].appendChild(pacContainer);
+                } else {
+                    console.log("Entering FULL SCREEN - moving pacContainer to target element");
+                    target.appendChild(pacContainer);
+                }
+            } else {
+                console.log("FULL SCREEN change - no pacContainer found");
+
+            }
+        };
+        var map;
+        var marker;
+
+        function initAutocomplete() {
+            const map = new google.maps.Map(document.getElementById("map1"), {
+                center: {
+                    lat: 20.5937,
+                    lng: 78.9629
+                },
+                zoom: 5,
+                mapTypeId: "roadmap"
+            }); // Create the search box and link it to the UI element.
+
+            const input = document.getElementById("pac-input");
+            const searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); // Bias the SearchBox results towards current map's viewport.
+
+            map.addListener("bounds_changed", () => {
+                searchBox.setBounds(map.getBounds());
+            });
+            let markers = []; // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            infoWindow = new google.maps.InfoWindow;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('You are here:<br>Lat: ' + pos.lat + '<br>Long: ' + pos.lng);
+                    marker = new google.maps.Marker({
+                        position: pos,
+                        map: map
+                    });
+                    infoWindow.open(map, marker);
+                    map.setCenter(pos);
+                    $("#latitude").val(pos.lat); // The latitude form input (it actually has an ID)
+                    $("#longitude").val(pos.lng); // The longitude input (No id LOL)
+
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+            google.maps.event.addListener(map, "click", function (e) {
+                latLng = e.latLng;
+
+                $("#latitude").val(e.latLng.lat());
+                $("#longitude").val(e.latLng.lng());
+
+                // if marker exists and has a .setMap method, hide it
+                if (marker && marker.setMap) {
+                    marker.setMap(null);
+                }
+                marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+                infoWindow.setPosition(latLng);
+                infoWindow.setContent('You have selected:<br>Lat: ' + e.latLng.lat() + '<br>Long: ' + e.latLng.lng());
+                infoWindow.open(map, marker);
+            });
+
+            searchBox.addListener("places_changed", () => {
+                const places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                } // Clear out the old markers.
+
+                markers.forEach(marker => {
+                    marker.setMap(null);
+                });
+                markers = []; // For each place, get the icon, name and location.
+
+                const bounds = new google.maps.LatLngBounds();
+                places.forEach(place => {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+
+                    const icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    }; // Create a marker for each place.
+
+                    markers.push(
+                        new google.maps.Marker({
+                            map,
+                            icon,
+                            title: place.name,
+                            position: place.geometry.location
+                        })
+                    );
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPQA0Nmga9m0o_mknAdHSAgypcnAng0nQ&callback=initAutocomplete&libraries=places&v=weekly"
+            defer
+    ></script>
+{% endblock %}
+</body>
+</html>

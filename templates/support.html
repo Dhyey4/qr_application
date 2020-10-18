@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+</head>
+<body>
+{% block content %}
+    <div class="container pd-x-0">
+        <!-- <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addemp">Add Employee</button> -->
+        <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+            <div>
+                <nav aria-label="breadcrumb">
+                    {% if msg %}
+                        <div class="alert alert-{{ type }}" id="ALERT" role="alert">
+                            {{ msg }}
+                        </div>
+                    {% endif %}
+                    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+                        <li class="breadcrumb-item"><a href="{% url 'face_auth:index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Support</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row row-lg">
+            <div class="table-responsive">
+                <table class="table table-striped mg-b-0" id="support_table" width="100%" style="text-align: center;">
+
+                </table>
+            </div>
+        </div><!-- row -->
+    </div>
+
+
+
+{% endblock %}
+</body>
+</html>
