@@ -157,6 +157,8 @@ class QRCODEAPI(APIView):
 
     def get(self, request, **kwargs):
         qrcode = kwargs['qr_code']
+        if qrcode != "qrtest":
+            return Response({"status": False, "code": 400, "msg": "QR Code Is No Available"}, status=status.HTTP_400_BAD_REQUEST)
         qrdata = QRCODE.objects.filter(qr_text=qrcode)[0]
         qrdata.counter = qrdata.counter + 1
         qrdata.save()
