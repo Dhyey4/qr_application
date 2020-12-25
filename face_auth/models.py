@@ -105,3 +105,8 @@ class USERQR(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     qrcode = models.ForeignKey(QRCODE, on_delete=models.SET_NULL, null=True)
     counter = models.BigIntegerField(default=0, null=True)
+
+class GraphTable(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+

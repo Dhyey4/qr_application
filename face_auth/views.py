@@ -3,13 +3,31 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, RedirectView
+from ipaddr import xrange
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from face_auth.models import *
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
+
 
 logger = logging.getLogger(__name__)
+
+one_day = timedelta(days=1)
+
+def get_week(date):
+    """Return the full week (Sunday first) of the week containing the given date.
+
+    'date' may be a datetime or date instance (the same type is returned).
+    """
+    day_idx = (date.weekday() + 1) % 7  # turn sunday into 0, monday into 1, etc.
+    sunday = date - timedelta(days=day_idx)
+    date = sunday
+    for n in xrange(7):
+        yield date
+        date += one_day
 
 
 class LogIn(TemplateView):
@@ -174,8 +192,94 @@ class QRSTATUSAPI(APIView):
     def get(self, request):
         qrdata = QRCODE.objects.filter(qr_text='qrtest')[0]
         userdata, created_status = USERQR.objects.get_or_create(user=request.user, qrcode=qrdata)
-
+        new_entry = GraphTable(user=request.user)
+        new_entry.save()
         return Response({"status": True, "code": 200,
                          "data": {"global": qrdata.counter, "local": userdata.counter}},
                         status=status.HTTP_200_OK)
 
+
+class GraphAPI(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        requested_type = request.POST.get('type')
+        final_data= {"type": requested_type, "chart":[]}
+        if requested_type == "today":
+            now = datetime.now()
+            print(now.year, now.month, now.day, now.hour, now.minute, now.second)
+            j = 6
+            for i in range(0, 5):
+                earlier = now - timedelta(hours=j)
+                if j==1:
+                    earlier_plus = datetime.now()
+                else:
+                    earlier_plus = now - timedelta(hours=(j-1))
+                result = GraphTable.objects.filter(created_at__range=(earlier, earlier_plus))
+                final_data["chart"].append({"time": earlier_plus.hour, "value": len(result)})
+                j = j -1
+        elif requested_type == "week":
+            week_dates = list(get_week(datetime.now().date()))
+            for dt in week_dates:
+                result = GraphTable.objects.filter(created_at=dt)
+                final_data["chart"].append({"time": dt, "value": len(result)})
+        elif requested_type == "month":
+            now = datetime.now()
+            print(now.year, now.month, now.day, now.hour, now.minute, now.second)
+            j = 5
+            for i in range(0, 5):
+                earlier = (now - relativedelta(months=j)).replace(day=1)
+                if j==1:
+                    earlier_plus = datetime.now()
+                else:
+                    earlier_plus = (now - relativedelta(months=j-1)).replace(day=30)
+                result = GraphTable.objects.filter(created_at__range=(earlier, earlier_plus))
+                final_data["chart"].append({"time": earlier_plus.month, "value": len(result)})
+                j = j -1
+        else: # requested_type == "year"
+            now = datetime.now()
+            years = [ now.year-i for i in range(5)]
+            for yr in years:
+                earlier = now.replace(month=1, year=yr)
+                earlier_plus = now.replace(month=12, year=yr)
+                result = GraphTable.objects.filter(created_at__range=(earlier, earlier_plus))
+                print(earlier_plus)
+                final_data["chart"].append({"time": earlier.year, "value": len(result)})
+        return Response({"status": True, "code": 200,
+                         "data": final_data, "msg": "chart data fetch succesfully.!"},
+                        status=status.HTTP_200_OK)
+"""
+POST API for chart
+-----------------
+Payload : 
+"type" : "today or ""week" or "month" or "year" or "world"
+"token" token XXXX
+--------------------
+Response : 
+{
+	"status": true,
+	"code": 200,
+	"data" : {
+		"type" : "today or "week" or "month" or "year" or "world",
+	 	"chart": [
+	 		{
+	 		  "time": 10:00 AM,
+	 		  "value": 1000  
+	 		},
+	 		{
+	 		  "time": 02:00 PM,
+	 		  "value": 563  
+	 		},
+	 		{
+	 		  "time": 04:00 PM,
+	 		  "value": 13  
+	 		},
+	 		{
+	 		  "time": 08:00 PM,
+	 		  "value": 6000  
+	 		}
+	 	]
+	},
+	"msg": "chart data fetch succesfully.!"
+}
+"""

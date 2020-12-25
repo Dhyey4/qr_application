@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/profile/', ProfileAPI.as_view(), name='profile'),
     path('api/qrcode/<qr_code>/', QRCODEAPI.as_view(), name='qrcode'),
     path('api/qrstatus/', QRSTATUSAPI.as_view(), name='qrstatus'),
+    path('api/graph/', GraphAPI.as_view(), name='graphapi'),
 
 
 ]
