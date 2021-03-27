@@ -1,3 +1,4 @@
+import json
 import logging
 from django.contrib.auth import authenticate, login, logout
 from django.core.files.storage import FileSystemStorage
@@ -238,8 +239,8 @@ class GraphAPI(APIView):
                 j = j -1
         else: # requested_type == "year"
             now = datetime.now()
-            years = [ now.year-i for i in range(5)]
-            for yr in years:
+            years = [now.year-i for i in range(5)]
+            for yr in years[::-1]:
                 earlier = now.replace(month=1, year=yr)
                 earlier_plus = now.replace(month=12, year=yr)
                 result = GraphTable.objects.filter(created_at__range=(earlier, earlier_plus))
@@ -248,6 +249,21 @@ class GraphAPI(APIView):
         return Response({"status": True, "code": 200,
                          "data": final_data, "msg": "chart data fetch succesfully.!"},
                         status=status.HTTP_200_OK)
+
+class PLCdemo(TemplateView):
+    template_name = "plc_demo.html"
+
+    def get_context_data(self, **kwargs):
+        context={}
+        sensor_data = DemoTest.objects.all().last()
+        print(15*"*")
+        print(sensor_data.data)
+        print(15*"*")
+        context['data'] = json.loads(sensor_data.data)
+        return context
+
+
+
 """
 POST API for chart
 -----------------

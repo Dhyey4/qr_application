@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+{% block content %}
+
+{#    <h3>{{ data }}</h3>#}
+    <div class="row row-xs">
+        <div class="alert alert-info" id="ALERT" role="alert" style="display: none;">
+            <p id="alert-msg"> First Upload Video For selected PF Number!!!! </p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped mg-b-0">
+                <thead>
+                <tr>
+                    <th scope="col">ry_voltage</th>
+                    <th scope="col">yn_voltage</th>
+                    <th scope="col">br_voltage</th>
+                    <th scope="col">rn_voltage</th>
+                    <th scope="col">bn_voltage</th>
+                    <th scope="col">y_current</th>
+                    <th scope="col">b_current</th>
+                    <th scope="col">r_current</th>
+                    <th scope="col">ln_voltage</th>
+                    <th scope="col">yb_voltage</th>
+                    <th scope="col">avg_pf</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th> {{ data.ry_voltage }}</th>
+                        <td>{{ data.yn_voltage }}</td>
+                        <td>{{ data.br_voltage }}</td>
+                        <td>{{ data.rn_voltage }}</td>
+                        <td>{{ data.bn_voltage }}</td>
+                        <td>{{ data.y_current }}</td>
+                        <td>{{ data.b_current }}</td>
+                        <td>{{ data.r_current }}</td>
+                        <td>{{ data.ln_voltage }}</td>
+                        <td>{{ data.yb_voltage }}</td>
+                        <td>{{ data.avg_pf }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><!-- row -->
+
+{% endblock %}
+</body>
+</html>

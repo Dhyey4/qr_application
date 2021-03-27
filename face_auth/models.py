@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 )
 from django.db import models
 from website.settings import base as settings
-from django.contrib.postgres.fields import ArrayField
+# from django.contrib.postgres.fields import ArrayField
 
 from website.settings.base import BASE_URL
 from django.utils import timezone
@@ -110,3 +110,15 @@ class GraphTable(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+class Sensors(models.Model):
+    status = models.BooleanField(default=False)
+    name = models.CharField(null=True, max_length=30)
+
+class TemratureData(models.Model):
+    temprature = models.FloatField(null=True, default=0.0)
+    set_temprature = models.FloatField(null=True, default=0.0)
+    created_time = models.DateTimeField(auto_now_add=True)
+
+
+class DemoTest(models.Model):
+    data = models.CharField(max_length=10000, null=True, blank=True)

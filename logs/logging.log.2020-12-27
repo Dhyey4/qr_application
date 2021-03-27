@@ -1,0 +1,51 @@
+[2020-12-27 17:36:35,455] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-12-27 17:36:49,688] ERROR [django.request:228] Internal Server Error: /api/graph/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 242, in post
+    for yr in years.reverse():
+TypeError: 'NoneType' object is not iterable
+[2020-12-27 17:37:50,782] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-12-27 17:37:51,474] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-12-27 17:37:55,181] ERROR [django.request:228] Internal Server Error: /api/graph/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 243, in post
+    for yr in years:
+TypeError: 'NoneType' object is not iterable
+[2020-12-27 17:38:23,987] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-12-27 17:38:24,706] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader

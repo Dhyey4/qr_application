@@ -1,0 +1,134 @@
+[2021-02-23 13:34:25,659] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:35:26,511] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 13:36:27,419] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2021-02-23 13:36:28,089] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:39:03,186] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/models.py changed, reloading.
+[2021-02-23 13:39:03,886] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:40:11,793] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:40:12,412] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:40:16,133] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:40:16,567] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:41:19,707] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:41:20,373] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:41:28,629] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:41:29,058] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:41:35,974] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:41:36,414] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 13:41:40,016] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 13:41:40,520] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:27:43,743] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:31:56,336] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:32:06,284] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:32:50,488] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:33:08,708] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:33:12,168] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:43:49,888] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/models.py changed, reloading.
+[2021-02-23 14:43:50,626] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:44:30,837] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/models.py changed, reloading.
+[2021-02-23 14:44:31,481] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:48:20,536] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 14:48:21,298] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:48:22,757] ERROR [django.request:228] Internal Server Error: /demo
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 158, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 257, in get_context_data
+    status = Sensors.objects.filter("Controler-1")
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1318, in _add_q
+    split_subq=split_subq, simple_col=simple_col,
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack (expected 2)
+[2021-02-23 14:48:50,897] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 14:48:51,541] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:49:04,280] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 14:49:04,703] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:49:12,716] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 14:49:13,267] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:50:08,434] ERROR [django.request:228] Internal Server Error: /demo
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 158, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 257, in get_context_data
+    sensor_status = Sensors.objects.filter("Controler-1")
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1318, in _add_q
+    split_subq=split_subq, simple_col=simple_col,
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack (expected 2)
+[2021-02-23 14:50:10,180] ERROR [django.request:228] Internal Server Error: /demo
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 158, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 257, in get_context_data
+    sensor_status = Sensors.objects.filter("Controler-1")
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1318, in _add_q
+    split_subq=split_subq, simple_col=simple_col,
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1187, in build_filter
+    arg, value = filter_expr
+ValueError: too many values to unpack (expected 2)
+[2021-02-23 14:50:10,364] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:50:40,501] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2021-02-23 14:50:41,275] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2021-02-23 14:56:22,837] WARNING [django.request:228] Not Found: /favicon.ico
+[2021-02-23 14:59:32,908] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader

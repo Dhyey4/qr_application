@@ -1,0 +1,238 @@
+[2020-10-18 14:17:59,341] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/face_auth/views.py changed, reloading.
+[2020-10-18 14:18:06,487] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:18:15,399] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/face_auth/views.py changed, reloading.
+[2020-10-18 14:18:20,383] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:19:11,714] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:19:18,967] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:19:21,985] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/face_auth/views.py changed, reloading.
+[2020-10-18 14:19:28,526] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:19:31,718] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:19:37,826] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:20:05,546] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:20:11,519] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:20:40,194] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:20:45,451] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:21:14,795] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:21:21,148] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:21:23,196] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:21:28,899] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:21:37,866] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:21:43,603] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 14:21:52,475] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/face_poc/model_training/generate_embedings.py changed, reloading.
+[2020-10-18 14:21:58,209] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 16:53:01,324] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 16:53:36,291] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 16:54:29,344] WARNING [django.request:228] Not Found: /favicon.ico
+[2020-10-18 17:00:02,368] ERROR [django.request:228] Internal Server Error: /api/register/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 91, in post
+    user = User.create_user(email=email, password=password, username=username, phone=phone, city=city, state=state,
+AttributeError: type object 'User' has no attribute 'create_user'
+[2020-10-18 17:02:07,201] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:02:07,786] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:02:39,830] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/website/urls.py changed, reloading.
+[2020-10-18 17:02:40,354] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:03:47,465] ERROR [django.request:228] Internal Server Error: /api/profile/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 107, in get
+    "user":{'id': user.id, 'username': user.username, 'email': user.email, 'work_location': user.worklocation_list,
+AttributeError: 'User' object has no attribute 'worklocation_list'
+[2020-10-18 17:04:39,663] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:04:40,291] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:04:46,166] WARNING [django.request:228] Forbidden: /api/profile/
+[2020-10-18 17:05:30,651] ERROR [django.request:228] Internal Server Error: /api/qrcode/qrtest/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 154, in get
+    qrdata.counter = qrdata.counter + 1
+AttributeError: 'QuerySet' object has no attribute 'counter'
+[2020-10-18 17:05:51,478] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:05:52,007] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:06:03,221] ERROR [django.request:228] Internal Server Error: /api/qrcode/qrtest/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 158, in get
+    return Response({"status": True, "code": 200, "msg": "QR Code Scanned Successfully!!!"},status=status.HTTP_200_OK)
+AttributeError: 'bool' object has no attribute 'HTTP_200_OK'
+[2020-10-18 17:06:20,758] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:06:21,307] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:06:29,201] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:06:29,734] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:07:38,973] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:07:39,529] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:07:43,143] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:07:43,679] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:07,979] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2020-10-18 17:08:08,615] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:13,266] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2020-10-18 17:08:13,805] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:21,709] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2020-10-18 17:08:22,252] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:25,788] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2020-10-18 17:08:26,342] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:29,899] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/urls.py changed, reloading.
+[2020-10-18 17:08:30,435] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:08:53,722] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:08:54,567] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:09:26,756] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:09:27,354] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:09:32,091] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:09:32,618] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:09:53,866] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:09:54,346] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:09:56,678] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:09:57,205] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:10:50,160] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:10:50,699] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:10:52,088] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:10:52,689] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 17:12:41,268] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 17:12:41,896] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:22:07,313] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:24:02,288] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 19:24:02,952] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:25:24,850] ERROR [django.request:228] Internal Server Error: /api/register/
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: face_auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/rest_framework/views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/views.py", line 97, in post
+    zipcode=zipcode, address=address)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/models.py", line 36, in create_user
+    return self._create_user(email, password, False, False, **extra_fields)
+  File "/Users/dhyey/Projects/Sites/qr_code/face_auth/models.py", line 32, in _create_user
+    user.save(using=self._db)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/contrib/auth/base_user.py", line 66, in save
+    super().save(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/models/sql/compiler.py", line 1375, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/dhyey/.virtualenvs/face_tick/lib/python3.5/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: face_auth_user.username
+[2020-10-18 19:26:56,475] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/models.py changed, reloading.
+[2020-10-18 19:26:57,225] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:27:15,351] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:28:14,614] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 19:28:15,166] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:28:56,976] INFO [django.utils.autoreload:217] /Users/dhyey/Projects/Sites/qr_code/face_auth/views.py changed, reloading.
+[2020-10-18 19:28:57,464] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:34:37,004] INFO [django.utils.autoreload:597] Watching for file changes with StatReloader
+[2020-10-18 19:34:39,033] WARNING [django.request:228] Not Found: /favicon.ico

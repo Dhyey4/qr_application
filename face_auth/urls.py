@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', LogIn.as_view(), name="login"),
     path('logout', LogOut.as_view(), name="logout"),
     path('', login_required(Index.as_view()), name='index'),
+    path('demo', PLCdemo.as_view(), name='plcdemo'),
 
     path('api/login/', LogInAPI.as_view(), name='loginAPI'),
     path('api/register/', RegisterAPI.as_view(), name='registerAPI'),
